@@ -47,7 +47,12 @@ class Normalizer(object):
     @staticmethod
     def retrieve_nouns_and_verbs(text):
         tokens = nltk.word_tokenize(text)
-        words = [n for n, t in nltk.pos_tag(tokens) if t[:2] in ('NN', 'VB')]
+        words = (
+            [
+                n for n, t in nltk.pos_tag(tokens)
+                if t in ('NN', 'VB')
+            ]
+        )
         return words
 
     def normalize(self, text):
